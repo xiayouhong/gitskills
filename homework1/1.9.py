@@ -9,17 +9,19 @@
 '''
 
 # here put the import lib
+# 设计一个猜数字 游戏；最多只能猜测N次，
+# 在N次之内猜不出，就退出程序，提示猜测失败；
 import random
-x=2
+x=random.randint(1,99)
 n=int(input('输入最多猜的次数:'))
 y=int(input('输入你猜的数字1-98:'))
 i=0
 while x!=y:
+    i+=1
     if y>x:
         print('比y小')
     else:
         print('比y大')
-    i+=1
     if n>i:
         y=int(input('输入你猜的数字1-98:'))
     else:
