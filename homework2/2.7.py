@@ -26,4 +26,4 @@ def grade(x):
         return 'D'
 list1=[random.randint(0,101) for i in range(20)]
 for i in list1:
-    print(i,grade(i))
+    print('成绩为{:6} 等级为{:>6}'.format(i,grade(i)))

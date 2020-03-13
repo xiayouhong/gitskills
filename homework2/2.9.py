@@ -11,7 +11,7 @@
 # here put the import lib
 #定义一个函数，函数接收一个数组，
 # 并把数组里面的数据从小到大排序(冒泡排序,  也可以直接使用相关的函数);
-def sort(a):
+def sorting(a):
     n=len(a)
     for x in range(n-1):
         for y in range(n-1-x):
@@ -20,4 +20,4 @@ def sort(a):
     print(a)
     return a
 a=[3,1,4,6,9,8]
-sort(a)
+sorting(a)

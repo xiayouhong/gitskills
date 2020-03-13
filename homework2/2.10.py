@@ -22,3 +22,6 @@ def cacluate(x,y,z):
     else:
         return -1
 print(cacluate(1,4,'+'))
+x,y=map(float,input('输入运算的两个数:').split())
+z=input('输入要进行的运算(例如：+,-): ')
+print(cacluate(x,y,z))

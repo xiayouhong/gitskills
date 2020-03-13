@@ -12,8 +12,11 @@
 #编写一个函数,接收n个数字，求这些参数数字的和;
 def sum(*arg):
     s=0
+    print('接收的数字为：')
     for i in arg:
+        print(i,end=' ')
         s+=i
+    print()
     print('和为:',s)
-sum(1,3,4)
+sum(1,2,3,7,4,8)
         

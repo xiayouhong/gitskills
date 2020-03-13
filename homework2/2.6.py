@@ -11,6 +11,7 @@
 # here put the import lib
 #定义一个函数, 打印输出n以内的斐波那契数列;
 def printf(n):
+    print('输出%d以内的斐波那契数列：'%n)
     a=0
     b=1
     print(a,b)

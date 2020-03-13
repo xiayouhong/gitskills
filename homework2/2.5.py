@@ -17,4 +17,7 @@ def check(mydict):
            mydict[k]=v[0:2] 
     return mydict
 dict1={2:'3','sg':'afaf'}
+print('原字典：')
+print(dict1)
+print('传入函数后：')
 print(check(dict1))

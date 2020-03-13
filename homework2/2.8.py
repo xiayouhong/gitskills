@@ -19,7 +19,8 @@ def most(str):
             dict1[i]+=1
         else:
             dict1[i]=1
-    print(max(dict1,key=dict1.get))
+    a=max(dict1,key=dict1.get)
+    print('输出：',a,dict1[a])
 str='afaahgjyrhth'
-print(str)
+print('输入：',str)
 most(str)
