@@ -12,8 +12,8 @@
 # 使用random模块，生成随机数，来初始化一个列表，元组；
 #    使用了 random 模块的 randint() 函数来生成随机数，查询一下相关函数的用法；
 import random
-x=int(input('输入你想创建的列表元素个数:'))
+x,y=map(int ,input('输入你想创建的列表,元组元素个数:').split())
 list1=[random.randint(1,99) for i in range(x)]
-tuple1=tuple(random.randint(1,99) for i in range(x))
-print(tuple1)
-print(list1)
+tuple1=tuple(random.randint(1,99) for i in range(y))
+print('列表为：',list1)
+print('元组为:',tuple1)

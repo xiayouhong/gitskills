@@ -24,5 +24,11 @@ dict9={'工号':9,'姓名':'I','年龄':30,'工资':9}
 dict10={'工号':10,'姓名':'J','年龄':30,'工资':10}
 list1=[dict1,dict2,dict3,dict4,dict5,dict6,dict7,dict8,dict9,dict10]
 list2=sorted(list1,key=lambda k:k['工资'],reverse=True)
-print(list1)
-print(list2)
+print('初始化时(未排序):')
+for i in list1:
+    print('工号：{:6} 姓名：{:6}  年龄：{:6} 工资：{:6}'
+    .format(i['工号'],i['姓名'],i['年龄'],i['工资']))
+print('排序后：')
+for i in list1:
+        print('工号：{:6} 姓名：{:6}  年龄：{:6} 工资：{:6}'
+    .format(i['工号'],i['姓名'],i['年龄'],i['工资']))

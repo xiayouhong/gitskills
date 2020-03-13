@@ -19,13 +19,13 @@ i=0
 while x!=y:
     i+=1
     if y>x:
-        print('比y小')
+        print('答案错误，正确答案比y小')
     else:
-        print('比y大')
+        print('答案错误，正确答案比y大')
     if n>i:
         y=int(input('输入你猜的数字1-98:'))
     else:
-        print('失败')
+        print('失败，游戏结束')
         break
 else:
-    print('猜对了！是{}'.format(y))      
+    print('恭喜你猜对了！是{}'.format(y))      

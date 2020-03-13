@@ -12,6 +12,7 @@
 #定义2个列表，并初始化；  找出这2个列表中，相同的元素并输出；
 list1=[2,'afa',8,'sgy','eye']
 list2=[2,'st','eye']
+print('相同的元素为:')
 for x in list1:
     if x in list2:
         print(x)
