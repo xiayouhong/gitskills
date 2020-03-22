@@ -1,0 +1,97 @@
+My name is li lei.Female.I was born at Taizhou,Zhejiang in March,1989.I began my schooling at Huanshan Primary School in 1996 and learned there for six years.After that I entered Taizhou Middle School in 1996 and graduated in 2002.In the autumn of the same year I was admitted to Zhejiang University,majoring in English in Foreign Language College.Besides,I also studied Chinese,politics,history,geography and computer science.Drawing,taking photos and swimming are my hobbies.What's more,I am skilled in typing and I once won the first prize in the typing contest in English held by our college.Summary of Windows Sockets 2 Functions
+
+The following tables summarize the functions included in Windows Sockets 2, separated into two groups: Berkeley-style functions, and Windows-specific Extension functions that have been ratified as part of the Windows Sockets 2 specification. These tables do not include the Windows Sockets functions known that are used with Registration and Name Resolution. For a list features introduced in Windows Sockets 2, see Windows Sockets 2 Features.
+
+
+The Winsock specification includes all the following Berkeley-style socket routines that were part of the Windows Sockets 1.1 API.
+
+Routine Meaning 
+accept1 An incoming connection is acknowledged and associated with an immediately created socket. The original socket is returned to the listening state. 
+bind Assigns a local name to an unnamed socket. 
+closesocket Removes a socket from the per-process object reference table. Only blocks if SO_LINGER is set with a nonzero time-out on a blocking socket. 
+connect1 Initiates a connection on the specified socket. 
+getpeername Retrieves the name of the peer connected to the specified socket. 
+getsockname Retrieves the local address to which the specified socket is bound. 
+getsockopt Retrieves options associated with the specified socket. 
+htonl2 Converts a 32-bit quantity from host-byte order to network-byte order. 
+htons2 Converts a 16-bit quantity from host-byte order to network-byte order. 
+inet_addr2 Converts a character string representing a number in the Internet standard ".'' notation to an Internet address value. 
+inet_ntoa2 Converts an Internet address value to an ASCII string in ".'' notation that is, "a.b.c.d''. 
+ioctlsocket Provides control for sockets. 
+listen Listens for incoming connections on a specified socket. 
+ntohl2 Converts a 32-bit quantity from network-byte order to host-byte order. 
+ntohs2 Converts a 16-bit quantity from network byte order to host byte order. 
+recv1 Receives data from a connected or unconnected socket. 
+recvfrom1 Receives data from either a connected or unconnected socket. 
+select1 Performs synchronous I/O multiplexing. 
+send1 Sends data to a connected socket. 
+sendto1 Sends data to either a connected or unconnected socket. 
+setsockopt Stores options associated with the specified socket. 
+shutdown Shuts down part of a full-duplex connection. 
+socket Creates an endpoint for communication and returns a socket descriptor. 
+The routine can block if acting on a blocking socket. 
+The routine is retained for backward compatibility with Windows Sockets 1.1, and should only be used for sockets created with AF_INET address family. 
+ 
+
+
+The Winsock specification provides a number of extensions to the standard set of Berkeley Sockets routines. Principally, these extended functions allow message or function-based, asynchronous access to network events, as well as enable overlapped I/O. While use of this extended API is not mandatory (with the exception of WSAStartup and WSACleanup), it is recommended for conformance with the Windows programming model.
+
+Routine Meaning 
+WSAAccept1 An extended version of accept, which allows for conditional acceptance. 
+WSAAsyncGetHostByAddr2 3 
+WSAAsyncGetHostByName2 3
+
+WSAAsyncGetProtoByName2 3
+
+WSAAsyncGetProtoByNumber2 3
+
+WSAAsyncGetServByName2 3
+
+WSAAsyncGetServByPort2 3
+ A set of functions that provide asynchronous versions of the standard Berkeley getXbyY functions. For example, the WSAAsyncGetHostByName function provides an asynchronous, message-based implementation of the standard Berkeley gethostbyname function. 
+WSAAsyncSelect3 Performs asynchronous version of select. 
+WSACancelAsyncRequest2 3 Cancels an outstanding instance of a WSAAsyncGetXByY function. 
+WSACleanup Signs off from the underlying Winsock DLL. 
+WSACloseEvent Destroys an event object. 
+WSAConnect1 An extended version of connect which allows for exchange of connect data and QOS specification. 
+WSACreateEvent Creates an event object. 
+WSADuplicateSocket Allows an underlying socket to be shared by creating a virtual socket. 
+WSAEnumNetworkEvents Discovers occurrences of network events. 
+WSAEnumProtocols Retrieves information about each available protocol. 
+WSAEventSelect Associates network events with an event object. 
+WSAGetLastError3 Obtains details of last Winsock error. 
+WSAGetOverlappedResult Gets completion status of overlapped operation. 
+WSAGetQOSByName Supplies QOS parameters based on a well-known service name. 
+WSAHtonl Extended version of htonl. 
+WSAHtons Extended version of htons. 
+WSAIoctl1 Overlapped-capable version of IOCTL. 
+WSAJoinLeaf1 Adds a multipoint leaf to a multipoint session. 
+WSANtohl Extended version of ntohl. 
+WSANtohs Extended version of ntohs. 
+WSAProviderConfigChange Receives notifications of service providers being installed/removed. 
+WSARecv1 An extended version of recv which accommodates scatter/gather I/O, overlapped sockets and provides the flags parameter as in, out. 
+WSARecvFrom1 An extended version of recvfrom which accommodates scatter/gather I/O, overlapped sockets and provides the flags parameter as in, out. 
+WSAResetEvent Resets an event object. 
+WSASend1 An extended version of send which accommodates scatter/gather I/O and overlapped sockets. 
+WSASendTo1 An extended version of sendto which accommodates scatter/gather I/O and overlapped sockets. 
+WSASetEvent Sets an event object. 
+WSASetLastError3 Sets the error to be returned by a subsequent WSAGetLastError. 
+WSASocket An extended version of socket which takes a WSAPROTOCOL_INFO structure as input and allows overlapped sockets to be created. 
+WSAStartup3 Initializes the underlying Winsock DLL. 
+WSAWaitForMultipleEvents1 Blocks on multiple event objects. 
+The routine can block if acting on a blocking socket. 
+The routine is always realized by the name resolution provider associated with the default TCP/IP service provider, if any. 
+The routine was originally a Windows Sockets 1.1 function. 
+ 
+
+
+The following Windows-specific extensions, added to Windows Sockets 1.1, are also available in Windows Sockets 2.
+
+AcceptEx
+GetAcceptExSockaddrs
+TransmitFile
+WSARecvEx
+
+These functions are not exported from the Ws2_32.dll; they are exported from Mswsock.dll.
+
+An application written to use the Windows-specific extensions to Winsock does not run correctly over a Winsock service provider that does not support those extensions
