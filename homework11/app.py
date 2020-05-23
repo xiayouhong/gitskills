@@ -2,6 +2,7 @@
 # @Time    : 2020/5/17 10:51
 # @Author  : xyh
 from flask import Flask, request, render_template
+from model.db import session,student,subject,timetable
 
 app = Flask(__name__)
 
@@ -15,11 +16,33 @@ def signin_form():
 
 @app.route('/signin', methods=['POST'])
 def signin():
-    username = request.form['username']
-    password = request.form['password']
-    if username=='admin' and password=='password':
-        return render_template('signin-ok.html', username=username)
-    return render_template('form.html', message='Bad username or password', username=username)
+    try:
+        username = request.form['username']
+        password = request.form['password']
+        stulist = session.query(student).all()
+        for i in stulist:
+            if i.id == username and i.password == password:
+                return render_template('signin-ok.html', username=i.name)
+        return render_template('form.html', message='Bad username or password', username=username)
+    except Exception as e:
+        print(e)
+    finally:
+        session.close()
+
+
+@app.route('/signin/choose',methods=['GET','POST'])
+def choose():
+    try:
+
+
+
+
+
+
+    except Exception as e:
+        print(e)
+
+
 
 if __name__ == '__main__':
     app.run()
