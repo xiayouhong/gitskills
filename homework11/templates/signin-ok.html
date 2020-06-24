@@ -1,8 +1,37 @@
 <html>
 <head>
-  <title>Welcome, {{ username }}</title>
+  <title>{{ username }}的选课主页</title>
 </head>
 <body>
-  <p>Welcome, {{ username }}!</p>
+ {#网页的标题#}
+<div align="center">
+    <h1>{{ username }}的选课主页<font size="2"></font></h1>
+    <table border="1"
+    cellpadding="30">
+        <thead>
+        <th>课程编号</th>
+        <th>课程名</th>
+        <th>课程时间</th>
+        <th>已选人数</th>
+        <th>是否选中</th>
+        <th>操作</th>
+        </thead>
+        <tbody>
+
+        {% for subject in subjects %}
+            <tr>
+                <td>{{ subject[0] }}</td>
+                <td>{{ subject[1] }}</td>
+                <td>{{ subject[2] }}</td>
+                <td>{{ subject[3] }}</td>
+                <td>{{ subject[4] }}</td>
+                <td><a href=" {{ url_for('select',username=username,id=subject[0])}}">选课</a>|<a
+                        href="{{ url_for('notselect',username=username,id=subject[0])}}">退选</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>
