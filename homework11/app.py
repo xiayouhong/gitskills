@@ -88,7 +88,8 @@ def select(stu_id,sub_id):
             session.commit()
             session.query(subject).filter_by(id=sub_id).update({'selected': sub.selected+1})
             session.commit()
-        return redirect(url_for('choose', stu_id=stu_id))
+        stu = session.query(student).filter_by(id = stu_id).one()
+        return redirect(url_for('choose', stu_id=stu_id,username=stu.name))
 
     except Exception as e:
         print(e)
@@ -96,7 +97,6 @@ def select(stu_id,sub_id):
 def notselect(stu_id,sub_id):
     try:
         sub = session.query(subject).filter_by(id=sub_id).one()
-        print(sub.time)
         stu_timetable = session.query(timetable).filter_by(id=stu_id).one()
         if sub.time == 'mon':
             stu_time = stu_timetable.mon
@@ -117,7 +117,8 @@ def notselect(stu_id,sub_id):
             session.commit()
             session.query(subject).filter_by(id=sub_id).update({'selected': sub.selected - 1})
             session.commit()
-        return redirect(url_for('choose', stu_id=stu_id))
+        stu = session.query(student).filter_by(id=stu_id).one()
+        return redirect(url_for('choose', stu_id=stu_id,username=stu.name))
     except Exception as e:
         print(e)
 @app.route('/main/<stu_id>/',methods = ['GET','POST'])
@@ -126,6 +127,6 @@ def main(stu_id):
     stu = session.query(student).filter_by(id = stu_id).one()
     return  render_template('main.html',username = stu.name, timetable = stu_timetable)
 if __name__ == '__main__':
-    # app.run(debug= 'TRUE')
-    app.run()
+    app.run(debug= 'TRUE')
+    # app.run()
     session.close()
